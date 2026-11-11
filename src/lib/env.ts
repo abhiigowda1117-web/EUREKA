@@ -9,6 +9,11 @@ export const supabaseKey =
   process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
 
 /** False until .env.local is filled in — the UI shows a setup notice instead of crashing. */
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseKey);
+// Placeholder values copied from .env.example count as "not configured".
+export const isSupabaseConfigured =
+  /^https?:\/\/.+/.test(supabaseUrl) &&
+  !supabaseUrl.includes("your-project-ref") &&
+  supabaseKey.length > 20 &&
+  !supabaseKey.includes("xxx");
 
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");

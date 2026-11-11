@@ -11,6 +11,15 @@ export const PROJECT_CARD_SELECT = `
   skills:project_skills(skill:skills(name))
 `;
 
+/**
+ * The landing page and marketplace should still render if Supabase is
+ * unreachable (wrong URL, network down). We log the real error for developers
+ * and show an empty state to visitors instead of crashing the page.
+ */
+function logUnreachable(what: string, message: string) {
+  console.error(`[FORGE] Could not load ${what}: ${message}. Check NEXT_PUBLIC_SUPABASE_URL / key in .env.local.`);
+}
+
 export async function getCategories(): Promise<Category[]> {
   if (!isSupabaseConfigured) return [];
   const supabase = await createClient();
@@ -18,7 +27,10 @@ export async function getCategories(): Promise<Category[]> {
     .from("categories")
     .select("id, slug, name, description, icon")
     .order("sort_order");
-  if (error) throw new Error(`Could not load categories: ${error.message}`);
+  if (error) {
+    logUnreachable("categories", error.message);
+    return [];
+  }
   return data;
 }
 
@@ -31,7 +43,10 @@ export async function getOpenProjects(limit = 6): Promise<ProjectCard[]> {
     .eq("status", "open")
     .order("created_at", { ascending: false })
     .limit(limit);
-  if (error) throw new Error(`Could not load projects: ${error.message}`);
+  if (error) {
+    logUnreachable("projects", error.message);
+    return [];
+  }
   return data as unknown as ProjectCard[];
 }
 
