@@ -14,7 +14,7 @@ const columns = [
     title: "Company",
     links: [
       { href: "/#how-it-works", label: "How it works" },
-      { href: "/#faq", label: "FAQ" },
+      { href: "/#why", label: "Why EUREKA" },
       { href: "/guidelines", label: "Community guidelines" },
     ],
   },

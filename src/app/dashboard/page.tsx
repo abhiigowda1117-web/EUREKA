@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, CheckCircle2, Circle, FileText, MessagesSquare, Search, Star } from "lucide-react";
+import { ArrowRight, Briefcase, CheckCircle2, Circle, FileText, MessagesSquare, Search, Star, UserRound } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectCard } from "@/components/projects/project-card";
@@ -53,10 +53,29 @@ export default async function DashboardPage({ searchParams }: PageProps<"/dashbo
             {profile.is_freelancer && <Badge variant="primary">Freelancer</Badge>}
           </div>
         </div>
-        <ButtonLink href="/projects">Explore projects <ArrowRight aria-hidden /></ButtonLink>
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_22rem]">
+      {/* Simple, role-based shortcuts: the three things people come here to do. */}
+      <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+        {[
+          ...(profile.is_freelancer ? [{ href: "/projects", icon: Search, title: "Find work", body: "Browse open projects" }] : []),
+          ...(profile.is_client ? [{ href: "/projects/new", icon: FileText, title: "Post a project", body: "Get proposals from students" }] : []),
+          { href: "/settings/profile", icon: UserRound, title: "My profile", body: `${completion.percent}% complete` },
+        ].map((a) => (
+          <li key={a.href}>
+            <Link href={a.href} className="group flex h-full items-center gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/50 hover:bg-card-hover card-glow">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"><a.icon className="size-6" aria-hidden /></span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-semibold">{a.title}</span>
+                <span className="block text-sm text-muted-foreground">{a.body}</span>
+              </span>
+              <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_22rem]">
         <div className="space-y-6">
           {profile.is_client && (
             <Card>

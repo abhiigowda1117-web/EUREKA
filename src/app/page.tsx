@@ -1,30 +1,22 @@
-import { Benefits } from "@/components/landing/benefits";
 import { Categories } from "@/components/landing/categories";
-import { Faq } from "@/components/landing/faq";
 import { FeaturedProjects } from "@/components/landing/featured-projects";
 import { FinalCta } from "@/components/landing/final-cta";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
-import { PlatformStats } from "@/components/landing/stats";
-import { Testimonials } from "@/components/landing/testimonials";
-import { WhyEureka } from "@/components/landing/why-eureka";
-import { getCategories, getOpenProjects, getPlatformStats } from "@/lib/queries/public";
+import { Mission } from "@/components/landing/mission";
+import { getCategories, getOpenProjects } from "@/lib/queries/public";
 
+// Kept deliberately short: what EUREKA is, why it matters, how it works, what's available.
+// (Benefits, stats, testimonials and FAQ sections still exist in components/landing if we want them back.)
 export default async function HomePage() {
-  // Fetch in parallel. All three are real database reads.
-  const [categories, projects, stats] = await Promise.all([getCategories(), getOpenProjects(6), getPlatformStats()]);
-
+  const [categories, projects] = await Promise.all([getCategories(), getOpenProjects(6)]);
   return (
     <>
       <Hero />
+      <Mission />
       <HowItWorks />
-      <Categories categories={categories} />
       <FeaturedProjects projects={projects} />
-      <WhyEureka />
-      <Benefits />
-      <PlatformStats stats={stats} categories={categories.length} />
-      <Testimonials />
-      <Faq />
+      <Categories categories={categories} />
       <FinalCta />
     </>
   );

@@ -67,10 +67,10 @@ await page.keyboard.press("Escape");
 await page.getByRole("link", { name: "Explore Projects" }).first().click();
 await page.waitForURL("**/projects");
 pass("hero CTA 'Explore Projects' navigates to /projects");
-await page.goto(BASE + "/#faq");
-const faq = page.locator("#faq details").first();
-await faq.locator("summary").click();
-(await faq.getAttribute("open")) !== null ? pass("FAQ item expands") : fail("FAQ item did not expand");
+await page.goto(BASE + "/");
+(await page.getByRole("heading", { name: /Internships ask for experience/ }).isVisible())
+  ? pass("'Why EUREKA matters' section is visible")
+  : fail("mission section missing");
 await browser.close();
 
 console.log(failures ? `\n${failures} check(s) failed.` : "\nAll smoke checks passed.");
