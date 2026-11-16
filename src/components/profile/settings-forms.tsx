@@ -187,7 +187,7 @@ export function SkillsForm({ groups, selected }: { groups: SkillGroup[]; selecte
                     disabled={!on && picked.size >= MAX_SKILLS}
                     className={cn(
                       "rounded-full border px-3 py-1.5 text-sm transition-colors disabled:opacity-40",
-                      on ? "border-primary bg-primary/15 text-blue-200" : "border-border-strong text-muted-foreground hover:text-foreground",
+                      on ? "border-primary bg-primary/15 text-sky-200" : "border-border-strong text-muted-foreground hover:text-foreground",
                     )}
                   >
                     {s.name}

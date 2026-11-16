@@ -5,12 +5,11 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24">
       {/* Background: grid + animated glow. Purely decorative. */}
-      <div aria-hidden className="absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
-      <div aria-hidden className="absolute left-1/2 top-[-12rem] -z-10 h-[36rem] w-[60rem] -translate-x-1/2 animate-glow rounded-full bg-[radial-gradient(closest-side,rgb(59_130_246/0.35),rgb(34_211_238/0.12)_60%,transparent)] blur-2xl" />
+            <div aria-hidden className="absolute left-1/2 top-[-12rem] -z-10 h-[36rem] w-[60rem] -translate-x-1/2 animate-glow rounded-full bg-[radial-gradient(closest-side,rgb(10_139_208/0.35),rgb(255_46_136/0.12)_60%,transparent)] blur-2xl" />
 
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
         <div className="animate-fade-up text-center lg:text-left">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-blue-200">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-sky-200">
             <Sparkles className="size-3.5" aria-hidden /> Built for India&apos;s student talent
           </p>
           <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-[4.25rem]">

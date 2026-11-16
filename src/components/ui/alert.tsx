@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const styles = {
-  info: { box: "border-primary/30 bg-primary/[0.08] text-blue-100", Icon: Info },
+  info: { box: "border-primary/30 bg-primary/[0.08] text-sky-100", Icon: Info },
   success: { box: "border-success/30 bg-success/[0.08] text-emerald-100", Icon: CheckCircle2 },
   warning: { box: "border-warning/30 bg-warning/[0.08] text-amber-100", Icon: TriangleAlert },
   error: { box: "border-destructive/30 bg-destructive/[0.08] text-red-100", Icon: AlertCircle },

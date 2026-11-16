@@ -2,25 +2,25 @@
 
 /* =============================================================================
    EUREKA design tokens
-   Dark navy/charcoal foundation, electric-blue accent. Token names follow the
+   Jet black foundation, cerulean blue primary, neon rose accent. Token names follow the
    shadcn/ui convention so `npx shadcn add <component>` output fits right in.
    ============================================================================= */
 :root {
-  --background: #070b14;        /* page */
-  --surface: #0b1120;           /* sections / sidebars */
-  --card: #0f1729;              /* cards */
-  --card-hover: #131d33;
+  --background: #0a0a0b;        /* page */
+  --surface: rgb(17 17 20 / 0.72);  /* translucent so the backdrop shows through */           /* sections / sidebars */
+  --card: rgb(20 20 24 / 0.86);              /* cards */
+  --card-hover: rgb(27 27 33 / 0.92);
   --foreground: #f1f5f9;        /* primary text */
   --muted-foreground: #94a3b8;  /* secondary text (≈7:1 contrast on background) */
   --subtle-foreground: #64748b; /* tertiary text, large/decorative only */
   --border: rgb(148 163 184 / 0.14);
   --border-strong: rgb(148 163 184 / 0.26);
   --input: rgb(148 163 184 / 0.22);
-  --primary: #3b82f6;           /* electric blue */
-  --primary-hover: #2563eb;
+  --primary: #0a8bd0;           /* cerulean blue */
+  --primary-hover: #0876b2;
   --primary-foreground: #ffffff;
-  --accent: #22d3ee;            /* cyan, used in gradients */
-  --ring: #60a5fa;
+  --accent: #ff2e88;            /* neon rose */
+  --ring: #38b6f0;
   --success: #34d399;
   --warning: #fbbf24;
   --destructive: #f87171;
@@ -81,13 +81,13 @@
     font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01";
   }
-  ::selection { background: rgb(59 130 246 / 0.35); }
+  ::selection { background: rgb(255 46 136 / 0.35); }
   :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 }
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(110deg, #ffffff 10%, #93c5fd 45%, var(--accent) 90%);
+    background: linear-gradient(110deg, #ffffff 5%, #5cc6f5 45%, var(--accent) 95%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

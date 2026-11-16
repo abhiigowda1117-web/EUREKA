@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Backdrop } from "@/components/site/backdrop";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteUrl } from "@/lib/env";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 // (Simple and correct for the MVP; revisit with Cache Components later.)
 export const dynamic = "force-dynamic";
 
-export const viewport: Viewport = { themeColor: "#070b14", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0a0a0b", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <Backdrop />
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}
