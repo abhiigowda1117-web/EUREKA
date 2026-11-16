@@ -22,7 +22,7 @@ export function PlatformStats({ stats, categories }: { stats: Stats; categories:
         ))}
       </dl>
       <p className="mt-8 text-center text-xs text-subtle-foreground">
-        {stats ? "Live numbers from the FORGE database. We're early — and we'd rather show you the truth." : "Statistics appear once the database is connected."}
+        {stats ? "Live numbers from the EUREKA database. We're early — and we'd rather show you the truth." : "Statistics appear once the database is connected."}
       </p>
     </Section>
   );

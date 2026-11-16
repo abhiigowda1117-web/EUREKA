@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { ProsePage } from "@/components/site/prose-page";
 
-export const metadata: Metadata = { title: "Community guidelines", description: "How we keep FORGE safe, honest and fair — including our academic integrity policy." };
+export const metadata: Metadata = { title: "Community guidelines", description: "How we keep EUREKA safe, honest and fair — including our academic integrity policy." };
 
 export default function GuidelinesPage() {
   return (
     <ProsePage title="Community guidelines" updated="11 November 2026">
       <section>
-        <p>FORGE works because people who have never met trust each other enough to collaborate. These guidelines protect that trust. Breaking them can lead to listings being removed or accounts being suspended.</p>
+        <p>EUREKA works because people who have never met trust each other enough to collaborate. These guidelines protect that trust. Breaking them can lead to listings being removed or accounts being suspended.</p>
       </section>
       <section>
         <h2 id="academic-integrity">Academic integrity</h2>
@@ -44,7 +44,7 @@ export default function GuidelinesPage() {
       </section>
       <section>
         <h2>Payments</h2>
-        <p>FORGE does not currently process, hold or guarantee payments. Agree on the price, milestones and payment method clearly before starting work, and record the payment status on the project.</p>
+        <p>EUREKA does not currently process, hold or guarantee payments. Agree on the price, milestones and payment method clearly before starting work, and record the payment status on the project.</p>
       </section>
       <section>
         <h2>Reporting</h2>

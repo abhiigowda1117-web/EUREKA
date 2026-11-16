@@ -6,13 +6,13 @@ import { educationSchema, onboardingSchema, portfolioSchema, profileBasicsSchema
 import { safeNextPath } from "../src/lib/utils.ts";
 
 test("sign-up requires name, valid email, strong password and accepted terms", () => {
-  const ok = signUpSchema.safeParse({ fullName: "Asha Rao", email: " Asha@Example.com ", password: "forge2026", terms: "on" });
+  const ok = signUpSchema.safeParse({ intent: "both", fullName: "Asha Rao", email: " Asha@Example.com ", password: "forge2026", terms: "on" });
   assert.ok(ok.success);
   assert.equal(ok.data.email, "asha@example.com", "email is trimmed and lower-cased");
-  assert.ok(!signUpSchema.safeParse({ fullName: "Asha", email: "asha@example.com", password: "short1", terms: "on" }).success);
-  assert.ok(!signUpSchema.safeParse({ fullName: "Asha", email: "asha@example.com", password: "lettersonly", terms: "on" }).success);
-  assert.ok(!signUpSchema.safeParse({ fullName: "Asha", email: "not-an-email", password: "forge2026", terms: "on" }).success);
-  assert.ok(!signUpSchema.safeParse({ fullName: "Asha", email: "asha@example.com", password: "forge2026" }).success, "terms required");
+  assert.ok(!signUpSchema.safeParse({ intent: "client", fullName: "Asha", email: "asha@example.com", password: "short1", terms: "on" }).success);
+  assert.ok(!signUpSchema.safeParse({ intent: "client", fullName: "Asha", email: "asha@example.com", password: "lettersonly", terms: "on" }).success);
+  assert.ok(!signUpSchema.safeParse({ intent: "client", fullName: "Asha", email: "not-an-email", password: "forge2026", terms: "on" }).success);
+  assert.ok(!signUpSchema.safeParse({ intent: "client", fullName: "Asha", email: "asha@example.com", password: "forge2026" }).success, "terms required");
 });
 
 test("reset password must match confirmation", () => {
@@ -62,4 +62,11 @@ test("safeNextPath blocks open redirects", () => {
   assert.equal(safeNextPath("//evil.com"), "/dashboard");
   assert.equal(safeNextPath("/\\evil.com"), "/dashboard");
   assert.equal(safeNextPath(null), "/dashboard");
+});
+
+test("sign-up requires choosing a role", () => {
+  const base = { fullName: "Asha Rao", email: "asha@example.com", password: "forge2026", terms: "on" };
+  assert.ok(!signUpSchema.safeParse(base).success, "role missing");
+  assert.ok(!signUpSchema.safeParse({ ...base, intent: "admin" }).success, "unknown role");
+  for (const intent of ["freelancer", "client", "both"]) assert.ok(signUpSchema.safeParse({ ...base, intent }).success, intent);
 });

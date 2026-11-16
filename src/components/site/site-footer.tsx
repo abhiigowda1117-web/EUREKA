@@ -7,7 +7,7 @@ const columns = [
     links: [
       { href: "/projects", label: "Explore projects" },
       { href: "/projects/new", label: "Post a project" },
-      { href: "/signup", label: "Join as a freelancer" },
+      { href: "/signup?role=freelancer", label: "Join as a freelancer" },
     ],
   },
   {
@@ -35,13 +35,13 @@ export function SiteFooter() {
         <div className="max-w-xs">
           <div className="flex items-center gap-2.5">
             <LogoMark />
-            <span className="text-[17px] font-bold tracking-[0.18em]">FORGE</span>
+            <span className="text-[17px] font-bold tracking-[0.16em]">EUREKA</span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             Where Talent Meets Opportunity. A marketplace built for India&apos;s students, freelancers and the people who
             need their skills.
           </p>
-          <p className="mt-4 text-sm font-medium text-foreground/90">We don&apos;t just imagine. We forge.</p>
+          <p className="mt-4 text-sm font-medium text-foreground/90">We don&apos;t just imagine. We build.</p>
         </div>
         {columns.map((col) => (
           <nav key={col.title} aria-label={col.title}>
@@ -60,8 +60,8 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-subtle-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© {new Date().getFullYear()} FORGE. All prices in Indian Rupees (₹).</p>
-          <p>FORGE does not process or hold payments. Clients and freelancers settle payments directly.</p>
+          <p>© {new Date().getFullYear()} EUREKA. All prices in Indian Rupees (₹).</p>
+          <p>EUREKA does not process or hold payments. Clients and freelancers settle payments directly.</p>
         </div>
       </div>
     </footer>

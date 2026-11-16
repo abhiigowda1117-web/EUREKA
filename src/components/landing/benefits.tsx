@@ -23,7 +23,7 @@ const groups = [
       "Build a portfolio and reputation with real reviews",
       "Work around your college timetable",
     ],
-    cta: { href: "/signup", label: "Create your profile" },
+    cta: { href: "/signup?role=freelancer", label: "Create your profile" },
   },
 ];
 

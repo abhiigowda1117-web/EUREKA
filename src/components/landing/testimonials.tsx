@@ -13,7 +13,7 @@ const examples = [
 export function Testimonials() {
   return (
     <Section id="stories">
-      <SectionHeading eyebrow="Stories" title="What FORGE is built to make possible" />
+      <SectionHeading eyebrow="Stories" title="What EUREKA is built to make possible" />
       <div className="mt-6 flex justify-center">
         <Badge variant="warning">Illustrative examples — not real users yet</Badge>
       </div>

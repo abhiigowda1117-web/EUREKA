@@ -16,7 +16,7 @@ const optionalUrl = z
   .refine((v) => v === null || /^https?:\/\/[^\s]+\.[^\s]+$/i.test(v), "Enter a full link starting with https://");
 
 export const RESERVED_USERNAMES = new Set([
-  "admin", "administrator", "forge", "support", "help", "api", "auth", "login", "signup", "settings",
+  "admin", "administrator", "forge", "eureka", "support", "help", "api", "auth", "login", "signup", "settings",
   "dashboard", "projects", "messages", "u", "root", "moderator", "staff", "official", "team",
 ]);
 
@@ -32,7 +32,7 @@ export const usernameSchema = z
 export const onboardingSchema = z.object({
   fullName: z.string().trim().min(2, "Enter your full name").max(80),
   username: usernameSchema,
-  intent: z.enum(["client", "freelancer", "both"], { error: "Choose how you want to use FORGE" }),
+  intent: z.enum(["client", "freelancer", "both"], { error: "Choose how you want to use EUREKA" }),
   college: optionalText(120),
 });
 

@@ -10,7 +10,7 @@ import { getOpenProjects } from "@/lib/queries/public";
 
 export const metadata: Metadata = {
   title: "Explore projects",
-  description: "Browse open freelance projects posted on FORGE — budgets in ₹.",
+  description: "Browse open freelance projects posted on EUREKA — budgets in ₹.",
 };
 
 export default async function ProjectsPage() {
@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Explore projects</h1>
-          <p className="mt-1 text-muted-foreground">Open opportunities from the FORGE community, newest first.</p>
+          <p className="mt-1 text-muted-foreground">Open opportunities from the EUREKA community, newest first.</p>
         </div>
         <ButtonLink href="/projects/new">Post a Project</ButtonLink>
       </div>
@@ -32,7 +32,7 @@ export default async function ProjectsPage() {
             {projects.map((p) => <li key={p.id}><ProjectCard project={p} /></li>)}
           </ul>
         ) : (
-          <EmptyState icon={Briefcase} title="No open projects yet" description="Be the first to post a project on FORGE." action={<ButtonLink href="/projects/new">Post a Project</ButtonLink>} />
+          <EmptyState icon={Briefcase} title="No open projects yet" description="Be the first to post a project on EUREKA." action={<ButtonLink href="/projects/new">Post a Project</ButtonLink>} />
         )}
       </div>
     </div>

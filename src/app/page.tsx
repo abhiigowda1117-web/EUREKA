@@ -7,7 +7,7 @@ import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { PlatformStats } from "@/components/landing/stats";
 import { Testimonials } from "@/components/landing/testimonials";
-import { WhyForge } from "@/components/landing/why-forge";
+import { WhyEureka } from "@/components/landing/why-eureka";
 import { getCategories, getOpenProjects, getPlatformStats } from "@/lib/queries/public";
 
 export default async function HomePage() {
@@ -20,7 +20,7 @@ export default async function HomePage() {
       <HowItWorks />
       <Categories categories={categories} />
       <FeaturedProjects projects={projects} />
-      <WhyForge />
+      <WhyEureka />
       <Benefits />
       <PlatformStats stats={stats} categories={categories.length} />
       <Testimonials />

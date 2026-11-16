@@ -9,7 +9,7 @@ export function FinalCta() {
         <div className="relative">
           <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">Turn skills into opportunities.</h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground sm:text-lg">
-            Join FORGE today — post your first project or start building your freelance reputation.
+            Join EUREKA today — post your first project or start building your freelance reputation.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <ButtonLink href="/signup" size="lg">Create free account <ArrowRight aria-hidden /></ButtonLink>

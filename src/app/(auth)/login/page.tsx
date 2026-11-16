@@ -16,7 +16,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
     <AuthCard
       title="Welcome back"
       description="Log in to manage your projects and proposals."
-      footer={<>New to FORGE? <Link href="/signup" className="font-medium text-primary hover:underline">Create an account</Link></>}
+      footer={<>New to EUREKA? <Link href="/signup" className="font-medium text-primary hover:underline">Create an account</Link></>}
     >
       {!isSupabaseConfigured && <SetupNotice className="mb-5" />}
       {params.verified === "1" && <Alert variant="success" title="Email verified — you can log in now." className="mb-5" />}

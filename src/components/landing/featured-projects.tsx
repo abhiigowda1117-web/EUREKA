@@ -13,7 +13,7 @@ export function FeaturedProjects({ projects }: { projects: ProjectCardData[] }) 
           align="left"
           eyebrow="Latest opportunities"
           title="Real projects, posted by real people"
-          description="These are the newest open projects on FORGE, straight from the marketplace."
+          description="These are the newest open projects on EUREKA, straight from the marketplace."
         />
         {projects.length > 0 && (
           <ButtonLink href="/projects" variant="secondary">
@@ -32,7 +32,7 @@ export function FeaturedProjects({ projects }: { projects: ProjectCardData[] }) 
           <EmptyState
             icon={Briefcase}
             title="No open projects yet"
-            description="FORGE is just getting started. Post the first project and get proposals from skilled students."
+            description="EUREKA is just getting started. Post the first project and get proposals from skilled students."
             action={<ButtonLink href="/projects/new">Post a Project</ButtonLink>}
           />
         )}

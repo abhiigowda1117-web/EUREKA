@@ -17,7 +17,7 @@ export const PROJECT_CARD_SELECT = `
  * and show an empty state to visitors instead of crashing the page.
  */
 function logUnreachable(what: string, message: string) {
-  console.error(`[FORGE] Could not load ${what}: ${message}. Check NEXT_PUBLIC_SUPABASE_URL / key in .env.local.`);
+  console.error(`[EUREKA] Could not load ${what}: ${message}. Check NEXT_PUBLIC_SUPABASE_URL / key in .env.local.`);
 }
 
 export async function getCategories(): Promise<Category[]> {

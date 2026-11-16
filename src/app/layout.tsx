@@ -10,10 +10,10 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: "FORGE — Where Talent Meets Opportunity", template: "%s · FORGE" },
+  title: { default: "EUREKA — Where Talent Meets Opportunity", template: "%s · EUREKA" },
   description:
-    "FORGE is a student-focused freelance marketplace. Post projects, discover talented students and freelancers, and turn your skills into real-world opportunities.",
-  openGraph: { siteName: "FORGE", type: "website", locale: "en_IN" },
+    "EUREKA is a student-focused freelance marketplace. Post projects, discover talented students and freelancers, and turn your skills into real-world opportunities.",
+  openGraph: { siteName: "EUREKA", type: "website", locale: "en_IN" },
 };
 
 // Every page shows the logged-in user in the header, so render per request.

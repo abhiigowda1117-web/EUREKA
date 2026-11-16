@@ -117,7 +117,7 @@ export default async function PublicProfilePage({ params }: PageProps<"/u/[usern
             ) : <p className="text-sm text-subtle-foreground">No experience added yet.</p>}
           </Block>
           <Block title="Reviews">
-            <EmptyState icon={Star} title="No reviews yet" description="Reviews appear here after completed FORGE projects. They can't be added any other way." className="py-8" />
+            <EmptyState icon={Star} title="No reviews yet" description="Reviews appear here after completed EUREKA projects. They can't be added any other way." className="py-8" />
           </Block>
         </div>
         <aside className="space-y-6">

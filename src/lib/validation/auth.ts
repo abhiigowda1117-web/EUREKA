@@ -9,7 +9,11 @@ export const passwordSchema = z
   .regex(/[a-zA-Z]/, "Include at least one letter")
   .regex(/[0-9]/, "Include at least one number");
 
+export const INTENTS = ["freelancer", "client", "both"] as const;
+export type Intent = (typeof INTENTS)[number];
+
 export const signUpSchema = z.object({
+  intent: z.enum(INTENTS, { error: "Choose whether you want to work, give projects, or both" }),
   fullName: z.string().trim().min(2, "Enter your full name").max(80),
   email,
   password: passwordSchema,

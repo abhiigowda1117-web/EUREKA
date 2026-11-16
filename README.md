@@ -1,4 +1,4 @@
-# FORGE — Where Talent Meets Opportunity
+# EUREKA — Where Talent Meets Opportunity
 
 A student-focused freelance marketplace for India. Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + Supabase (Postgres, Auth, Storage).
 

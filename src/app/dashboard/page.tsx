@@ -79,7 +79,7 @@ export default async function DashboardPage({ searchParams }: PageProps<"/dashbo
           )}
           <Card>
             <CardHeader>
-              <CardTitle>Coming to FORGE</CardTitle>
+              <CardTitle>Coming to EUREKA</CardTitle>
               <CardDescription>We&apos;re building in milestones. Here&apos;s what&apos;s next on your dashboard.</CardDescription>
             </CardHeader>
             <CardContent>

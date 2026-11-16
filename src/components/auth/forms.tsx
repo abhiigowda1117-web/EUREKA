@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { SubmitButton } from "@/components/ui/submit-button";
 import type { ActionState } from "@/lib/types";
 import { PasswordInput } from "./password-input";
+import { RolePicker } from "./role-picker";
 
 const initial: ActionState = {};
 const err = (s: ActionState, k: string) => s.fieldErrors?.[k]?.[0];
@@ -18,11 +19,12 @@ function FormError({ state }: { state: ActionState }) {
   return <Alert variant="error" title={state.error} />;
 }
 
-export function SignUpForm({ disabled }: { disabled?: boolean }) {
+export function SignUpForm({ disabled, defaultIntent }: { disabled?: boolean; defaultIntent?: string }) {
   const [state, action] = useActionState(signUp, initial);
   return (
     <form action={action} className="space-y-5" noValidate>
       <FormError state={state} />
+      <RolePicker defaultValue={state.values?.intent ?? defaultIntent} error={err(state, "intent")} />
       <Field id="fullName" label="Full name" error={err(state, "fullName")}>
         <Input {...fieldAria("fullName", err(state, "fullName"))} autoComplete="name" required defaultValue={state.values?.fullName} />
       </Field>

@@ -38,8 +38,8 @@ function friendlyAuthError(code: string | undefined, fallback: string) {
 
 export async function signUp(_prev: ActionState, formData: FormData): Promise<ActionState> {
   if (!isSupabaseConfigured) return NOT_CONFIGURED;
-  const fields = formFields(formData, ["fullName", "email", "password"]);
-  const values = { fullName: fields.fullName, email: fields.email }; // never echo passwords back
+  const fields = formFields(formData, ["intent", "fullName", "email", "password"]);
+  const values = { intent: fields.intent, fullName: fields.fullName, email: fields.email }; // never echo passwords back
   const parsed = signUpSchema.safeParse({ ...fields, terms: formData.get("terms") ?? undefined });
   if (!parsed.success) return validationError(parsed.error, values);
 
@@ -48,7 +48,8 @@ export async function signUp(_prev: ActionState, formData: FormData): Promise<Ac
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
-      data: { full_name: parsed.data.fullName },
+      // Saved with the account; onboarding starts from this choice.
+      data: { full_name: parsed.data.fullName, intent: parsed.data.intent },
       emailRedirectTo: `${await origin()}/auth/confirm?next=/onboarding`,
     },
   });

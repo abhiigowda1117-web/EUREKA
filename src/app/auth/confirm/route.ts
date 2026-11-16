@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { safeNextPath } from "@/lib/utils";
 
 /**
- * Every link in a FORGE email (verify email, reset password) lands here.
+ * Every link in a EUREKA email (verify email, reset password) lands here.
  * We exchange the one-time token for a session, then send the user on.
  *
  * Supports both Supabase link styles:

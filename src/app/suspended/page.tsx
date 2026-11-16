@@ -11,7 +11,7 @@ export default function SuspendedPage() {
       </span>
       <h1 className="mt-5 text-2xl font-semibold">Your account is suspended</h1>
       <p className="mt-2 text-muted-foreground">
-        This account was suspended for breaking the community guidelines. If you believe this is a mistake, contact the FORGE team.
+        This account was suspended for breaking the community guidelines. If you believe this is a mistake, contact the EUREKA team.
       </p>
       <form action="/auth/signout" method="post" className="mt-8">
         <button type="submit" className="text-sm text-primary hover:underline">Log out</button>

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
       </section>
       <section>
         <h2>Your choices</h2>
-        <p>You can edit your profile at any time. To delete your account and associated data, contact the FORGE team.</p>
+        <p>You can edit your profile at any time. To delete your account and associated data, contact the EUREKA team.</p>
       </section>
     </ProsePage>
   );

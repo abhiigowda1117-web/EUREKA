@@ -12,7 +12,7 @@ export function HowItWorks() {
   return (
     <Section id="how-it-works" className="border-t border-border">
       <SectionHeading
-        eyebrow="How FORGE works"
+        eyebrow="How EUREKA works"
         title="From problem to finished work in four steps"
         description="A clear, transparent flow for both sides — no middlemen, no guesswork."
       />

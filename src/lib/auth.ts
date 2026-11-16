@@ -12,7 +12,7 @@ import type { Profile } from "@/lib/types";
  */
 // NOTE: Supabase's "Confirm email" setting must be ON. Then nobody can obtain a
 // session before verifying their email, so every SessionUser is email-verified.
-export type SessionUser = { id: string; email: string };
+export type SessionUser = { id: string; email: string; intent?: string };
 
 export const getSessionUser = cache(async (): Promise<SessionUser | null> => {
   if (!isSupabaseConfigured) return null;
@@ -20,7 +20,8 @@ export const getSessionUser = cache(async (): Promise<SessionUser | null> => {
   // getClaims() verifies the JWT signature — unlike getSession(), it can't be spoofed by a tampered cookie.
   const { data, error } = await supabase.auth.getClaims();
   if (error || !data?.claims?.sub) return null;
-  return { id: data.claims.sub, email: data.claims.email ?? "" };
+  const meta = data.claims.user_metadata as { intent?: string } | undefined;
+  return { id: data.claims.sub, email: data.claims.email ?? "", intent: meta?.intent };
 });
 
 export const getCurrentProfile = cache(async (): Promise<Profile | null> => {

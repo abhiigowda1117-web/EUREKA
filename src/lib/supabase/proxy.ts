@@ -6,6 +6,8 @@ import { isSupabaseConfigured, supabaseKey, supabaseUrl } from "@/lib/env";
 const PROTECTED_PREFIXES = ["/dashboard", "/settings", "/onboarding", "/projects/new", "/reset-password"];
 /** Routes a logged-in user has no reason to see. */
 const GUEST_ONLY = ["/login", "/signup", "/forgot-password"];
+/** Pages a signed-in user may see BEFORE creating their profile. Everything else sends them to /onboarding. */
+const ALLOWED_BEFORE_PROFILE = ["/onboarding", "/auth", "/reset-password", "/suspended", "/terms", "/privacy", "/guidelines"];
 
 /**
  * Runs before every request (see src/proxy.ts):
@@ -20,6 +22,7 @@ export async function updateSession(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   let response = NextResponse.next({ request });
   let isLoggedIn = false; // Without Supabase configured, everyone is a guest.
+  let needsProfile = false;
 
   if (isSupabaseConfigured) {
     const supabase = createServerClient(supabaseUrl, supabaseKey, {
@@ -40,6 +43,13 @@ export async function updateSession(request: NextRequest) {
     // createServerClient and this call, or sessions may randomly log out.
     const { data } = await supabase.auth.getClaims();
     isLoggedIn = Boolean(data?.claims?.sub);
+
+    // Profile first: until onboarding is finished, the rest of the site is off-limits.
+    const mayBrowse = ALLOWED_BEFORE_PROFILE.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+    if (isLoggedIn && !mayBrowse) {
+      const { data: profile } = await supabase.from("profiles").select("onboarded_at").eq("id", data!.claims.sub).maybeSingle();
+      needsProfile = !profile?.onboarded_at;
+    }
   }
 
   const redirectTo = (path: string, params: Record<string, string> = {}) => {
@@ -54,6 +64,9 @@ export async function updateSession(request: NextRequest) {
 
   if (!isLoggedIn && PROTECTED_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`))) {
     return redirectTo("/login", { next: pathname + search });
+  }
+  if (needsProfile) {
+    return redirectTo("/onboarding");
   }
   if (isLoggedIn && GUEST_ONLY.includes(pathname)) {
     return redirectTo("/dashboard");

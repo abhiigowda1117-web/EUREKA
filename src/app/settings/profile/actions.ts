@@ -33,7 +33,7 @@ export async function updateBasics(_prev: ActionState, formData: FormData): Prom
   if (!parsed.success) return validationError(parsed.error, fields);
   const v = parsed.data;
   if (!v.isClient && !v.isFreelancer) {
-    return { error: "Please fix the highlighted fields.", fieldErrors: { roles: ["Choose at least one way to use FORGE"] }, values: fields };
+    return { error: "Please fix the highlighted fields.", fieldErrors: { roles: ["Choose at least one way to use EUREKA"] }, values: fields };
   }
 
   const supabase = await createClient();

@@ -10,11 +10,11 @@ const reasons = [
   { icon: Lock, title: "Academic integrity built in", body: "Tutoring, guidance and real projects are welcome. Exam cheating and ghostwriting graded work are not." },
 ];
 
-export function WhyForge() {
+export function WhyEureka() {
   return (
     <Section id="why" className="border-t border-border bg-surface">
       <SectionHeading
-        eyebrow="Why choose FORGE"
+        eyebrow="Why choose EUREKA"
         title="A marketplace you can actually trust"
         description="Strangers working together need clarity and safety. That's what we build first."
       />
